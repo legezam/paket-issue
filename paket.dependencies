@@ -1,0 +1,47 @@
+source https://api.nuget.org/v3/index.json
+source https://nuget.org/api/v2
+
+framework: net8.0, netstandard2.0, netstandard2.1
+storage:none
+
+nuget Fable.FontAwesome.Free
+nuget FSharp.Core ~> 8
+nuget Fable.Elmish.Browser
+#
+# Backend
+nuget Giraffe
+nuget Microsoft.Extensions.Configuration
+nuget Thoth.Json.Giraffe
+nuget DuckDB.NET.Data.Full
+nuget Xid.Net
+
+nuget AspNetCore
+nuget Fsharp.Data.Npgsql
+nuget FSharp.Data.LiteralProviders
+nuget Npgsql
+
+nuget Fable.Remoting.Giraffe ~> 5
+
+
+nuget Fable.Core ~> 4
+nuget Fable.Elmish ~> 4
+nuget Fable.Elmish.React ~> 4
+nuget Fable.Elmish.Debugger ~> 4
+nuget Fable.Elmish.HMR ~> 7
+nuget Fable.Mocha ~> 2
+nuget Fable.Remoting.Client ~> 7
+nuget Feliz ~> 2
+nuget Feliz.Plotly.V2
+
+group Build
+source https://api.nuget.org/v3/index.json
+source https://nuget.org/api/v2
+framework: net8.0, netstandard2.0, netstandard2.1
+storage:none
+
+nuget Fake.Core.Target ~> 6
+nuget Fake.IO.FileSystem ~> 6
+nuget Fake.DotNet.Cli ~> 6
+nuget Fake.Core.ReleaseNotes ~> 6
+nuget Fake.DotNet.AssemblyInfoFile ~> 6
+nuget Fake.Tools.Git ~> 6
