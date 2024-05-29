@@ -3,7 +3,7 @@ name: Build runtime container
 on:
   push:
     branches: 
-      - main
+      - x86
 
 jobs:
   build-runtime-image:
@@ -22,4 +22,4 @@ jobs:
           push: false
           tags: foo:latest
           file: Docker/RuntimeImage
-          platforms: linux/arm64
+          

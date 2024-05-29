@@ -1,10 +1,10 @@
-FROM arm64v8/ubuntu:noble-20240429 AS build-env
+FROM ubuntu:noble-20240429 AS build-env
 RUN apt-get update && apt-get install -y wget xz-utils git
 
 # Installing dotnet
 
 ARG DOTNET_VERSION=8.0.300
-ARG DOTNET_ARCH=arm64
+ARG DOTNET_ARCH=amd64
 ENV DOTNET_INSTALL_DIR=/dotnet
 
 # to avoid the need for installing libICU
@@ -20,7 +20,7 @@ RUN ln -s /dotnet/dotnet /usr/bin/dotnet
 # Installing Node
 
 ARG NODE_VERSION=20.13.1
-ARG NODE_ARCH=linux-arm64
+ARG NODE_ARCH=linux-amd64
 
 RUN wget -O node.tar.xz https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-${NODE_ARCH}.tar.xz && tar xf node.tar.xz
 RUN mv node-v${NODE_VERSION}-${NODE_ARCH} node && rm node.tar.xz
