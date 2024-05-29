@@ -1,21 +1,6 @@
-FROM arm64v8/ubuntu:noble-20240429 AS build-env
+FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:8.0-jammy AS build-env
+
 RUN apt-get update && apt-get install -y wget xz-utils git
-
-# Installing dotnet
-
-ARG DOTNET_VERSION=8.0.300
-ARG DOTNET_ARCH=arm64
-ENV DOTNET_INSTALL_DIR=/dotnet
-
-# to avoid the need for installing libICU
-ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
-
-RUN wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh \
-        && chmod +x ./dotnet-install.sh \
-        && ./dotnet-install.sh --version ${DOTNET_VERSION} --arch ${DOTNET_ARCH} \
-        && rm dotnet-install.sh
-    
-RUN ln -s /dotnet/dotnet /usr/bin/dotnet
 
 # Installing Node
 
@@ -33,6 +18,6 @@ ENV DOTNET_CLI_TELEMETRY_OPTOUT=true
 
 COPY . /build/
 WORKDIR /build
-RUN dotnet tool restore 
+RUN dotnet tool restore
 
 RUN dotnet paket install
